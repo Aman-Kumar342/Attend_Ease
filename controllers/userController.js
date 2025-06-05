@@ -1,4 +1,4 @@
-const user=require('../models/User');
+const User=require('../models/User');
 const bcrypt=require('bcryptjs');
 
 
@@ -32,7 +32,7 @@ const registerUser=async(req,res)=>{
     //return user data without sensitive information
     
     const userResponse={
-        id:user,_id,
+        id:user._id,
         name:user.name,
         email:user.email,
         phone:user.phone,

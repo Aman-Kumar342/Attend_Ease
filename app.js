@@ -4,6 +4,9 @@ const cors = require('cors');
 const morgan = require('morgan');
 const connectDb = require('./config/database');
 
+// Import routes
+const userRoutes = require('./routes/userRoutes');
+
 const app = express();
 
 // Connect to database
@@ -13,6 +16,9 @@ connectDb();
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
+
+// Use routes
+app.use('/api/users', userRoutes);
 
 // Test route
 app.get('/', (req, res) => {
@@ -26,6 +32,16 @@ app.get('/health', (req, res) => {
      message: 'Server is healthy' ,
      Timestamp:new Date().toISOString()
     });
+});
+
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({
+    success: false,
+    message: 'Something went wrong on the server',
+  });
 });
 
 // Start server
