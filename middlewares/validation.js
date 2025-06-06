@@ -22,6 +22,19 @@ const validateRegistration = [
     .isIn(['student', 'admin'])
     .withMessage('Role must be either student or admin'),
 ];
+// Validate rules for user login
+const validateLogin = [
+    body('email')
+    .isEmail()
+    .normalizeEmail()
+    .withMessage('Please enter a valid email address'),
+
+    body('password')
+    .notEmpty()
+    .withMessage('Password must be at least 6 characters long'),
+
+];
+
 //Middleware to handle validation errors
 
 const handleValidationErrors=(req,res,next)=>{
@@ -39,5 +52,6 @@ const handleValidationErrors=(req,res,next)=>{
 //Export the validation middleware
 module.exports = {
     validateRegistration,
+    validateLogin,
     handleValidationErrors
 };
