@@ -6,6 +6,7 @@ const connectDb = require('./config/database');
 
 // Import routes
 const userRoutes = require('./routes/userRoutes');
+const seatRoutes = require('./routes/seatRoutes');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(morgan('dev'));
 
 // Use routes
 app.use('/api/users', userRoutes);
+app.use('/api/seats', seatRoutes);
 
 // Test route
 app.get('/', (req, res) => {
