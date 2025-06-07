@@ -8,6 +8,7 @@ const connectDb = require('./config/database');
 const userRoutes = require('./routes/userRoutes');
 const seatRoutes = require('./routes/seatRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
+const attendanceRoutes = require('./routes/attendanceRoutes');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(morgan('dev'));
 app.use('/api/users', userRoutes);
 app.use('/api/seats', seatRoutes);
 app.use('/api/bookings', bookingRoutes);
+app.use('/api/attendance', attendanceRoutes); 
 
 // Test route
 app.get('/', (req, res) => {
