@@ -9,6 +9,8 @@ const userRoutes = require('./routes/userRoutes');
 const seatRoutes = require('./routes/seatRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
 const attendanceRoutes = require('./routes/attendanceRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+const reportRoutes = require('./routes/reportRoutes');
 
 const app = express();
 
@@ -26,6 +28,8 @@ app.use('/api/users', userRoutes);
 app.use('/api/seats', seatRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/attendance', attendanceRoutes); 
+app.use('/api/admin', adminRoutes);
+app.use('/api/reports', reportRoutes);
 
 // Test route
 app.get('/', (req, res) => {
