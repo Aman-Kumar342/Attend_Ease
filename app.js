@@ -44,6 +44,10 @@ app.get('/health', (req, res) => {
      Timestamp:new Date().toISOString()
     });
 });
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true
+}));
 
 
 // Error handling middleware
