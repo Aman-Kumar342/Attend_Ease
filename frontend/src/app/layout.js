@@ -17,7 +17,7 @@ export const metadata = {
   description: "Modern library seat booking and attendance management system", // UPDATED
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }) { 
   return (
     <html lang="en">
       <body

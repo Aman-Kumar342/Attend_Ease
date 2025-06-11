@@ -42,87 +42,149 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <div className="auth-header">
-          <h2 className="auth-title">Create your account</h2>
-          <p className="auth-subtitle">
-            Or{' '}
-            <Link href="/login" className="auth-link">
-              sign in to your existing account
-            </Link>
-          </p>
-        </div>
-        
-        <form className="auth-form" onSubmit={handleSubmit}>
-          {error && (
-            <div className="error-box">
-              {error}
-            </div>
-          )}
-          
-          <div className="input-list">
-            <input
-              name="name"
-              type="text"
-              required
-              className="input-field"
-              placeholder="Full Name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-            
-            <input
-              name="email"
-              type="email"
-              required
-              className="input-field"
-              placeholder="Email address"
-              value={formData.email}
-              onChange={handleChange}
-            />
-            
-            <input
-              name="phone"
-              type="tel"
-              required
-              pattern="[0-9]{10}"
-              className="input-field"
-              placeholder="Phone Number (10 digits)"
-              value={formData.phone}
-              onChange={handleChange}
-            />
-            
-            <input
-              name="password"
-              type="password"
-              required
-              minLength="6"
-              className="input-field"
-              placeholder="Password (min 6 characters)"
-              value={formData.password}
-              onChange={handleChange}
-            />
-            
-            <select
-              name="role"
-              className="input-field"
-              value={formData.role}
-              onChange={handleChange}
-            >
-              <option value="student">Student</option>
-              <option value="admin">Admin</option>
-            </select>
+    <div className="auth-page">
+      {/* Background Elements */}
+      <div className="auth-bg-pattern"></div>
+      
+      {/* Header */}
+      <div className="auth-header-section">
+        <Link href="/" className="auth-logo-link">
+          <div className="auth-logo">
+            <span className="auth-logo-text">A</span>
           </div>
+          <h1 className="auth-app-name">ATTENDEASE</h1>
+        </Link>
+      </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="btn-primary"
-          >
-            {loading ? 'Creating account...' : 'Create account'}
-          </button>
-        </form>
+      {/* Main Content */}
+      <div className="auth-container">
+        <div className="auth-card">
+          <div className="auth-card-header">
+            <div className="auth-icon">✨</div>
+            <h2 className="auth-title">Join AttendEase</h2>
+            <p className="auth-subtitle">
+              Create your account and start managing your study time
+            </p>
+          </div>
+          
+          <form className="auth-form" onSubmit={handleSubmit}>
+            {error && (
+              <div className="error-message">
+                <span className="error-icon">⚠️</span>
+                {error}
+              </div>
+            )}
+            
+            <div className="form-group">
+              <label className="form-label">
+                <span className="label-icon">👤</span>
+                Full Name
+              </label>
+              <input
+                name="name"
+                type="text"
+                required
+                className="form-input"
+                placeholder="Enter your full name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">
+                <span className="label-icon">📧</span>
+                Email Address
+              </label>
+              <input
+                name="email"
+                type="email"
+                required
+                className="form-input"
+                placeholder="Enter your email address"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
+            
+            <div className="form-group">
+              <label className="form-label">
+                <span className="label-icon">📱</span>
+                Phone Number
+              </label>
+              <input
+                name="phone"
+                type="tel"
+                required
+                pattern="[0-9]{10}"
+                className="form-input"
+                placeholder="Enter 10-digit phone number"
+                value={formData.phone}
+                onChange={handleChange}
+              />
+            </div>
+            
+            <div className="form-group">
+              <label className="form-label">
+                <span className="label-icon">🔒</span>
+                Password
+              </label>
+              <input
+                name="password"
+                type="password"
+                required
+                minLength="6"
+                className="form-input"
+                placeholder="Create a strong password (min 6 characters)"
+                value={formData.password}
+                onChange={handleChange}
+              />
+            </div>
+            
+            <div className="form-group">
+              <label className="form-label">
+                <span className="label-icon">🎭</span>
+                Account Type
+              </label>
+              <select
+                name="role"
+                className="form-select"
+                value={formData.role}
+                onChange={handleChange}
+              >
+                <option value="student">🎓 Student Account</option>
+                <option value="admin">👨‍💼 Admin Account</option>
+              </select>
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="submit-btn"
+            >
+              {loading ? (
+                <>
+                  <span className="btn-spinner">⏳</span>
+                  Creating account...
+                </>
+              ) : (
+                <>
+                  <span className="btn-icon">🎉</span>
+                  Create Account
+                </>
+              )}
+            </button>
+          </form>
+
+          <div className="auth-footer">
+            <p className="auth-switch">
+              Already have an account?{' '}
+              <Link href="/login" className="auth-switch-link">
+                Sign in here
+              </Link>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
